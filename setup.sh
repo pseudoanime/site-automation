@@ -3,7 +3,7 @@
 sudo -u vagrant git pull origin master
 if [ ! -f .env.dev ]; then
     if [ ! -f .env.example ]; then
-        laravel new .
+        laravel new
      fi
     cp .env.example .env
     echo -n "WHAT IS THE NAME OF THE DATABASE FOR THIS APP"
