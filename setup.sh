@@ -1,6 +1,9 @@
 #!/usr/bin/env
 
 if [ ! -f .env.dev ]; then
+    if [ ! -f .env.example ]; then
+        laravel new .
+     fi
     cp .env.example .env
     echo -n "WHAT IS THE NAME OF THE DATABASE FOR THIS APP"
     read DATABASE
