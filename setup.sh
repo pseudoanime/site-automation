@@ -1,6 +1,6 @@
 #!/usr/bin/env
 
-if [ -d .git ]; then
+if [ $(git rev-parse --is-inside-work-tree) = true ]; then
     sudo -u vagrant git pull origin master
 fi
 if [ ! -f .env.dev ]; then
