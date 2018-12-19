@@ -1,6 +1,8 @@
 #!/usr/bin/env
 
-sudo -u vagrant git pull origin master
+if [ -d .git ]; then
+    sudo -u vagrant git pull origin master
+fi
 if [ ! -f .env.dev ]; then
     if [ ! -f .env.example ]; then
         laravel new --force .
