@@ -1,11 +1,13 @@
 #!/usr/bin/env
 
-if [ $(git rev-parse --is-inside-work-tree) = true ]; then
+if [ -d .git ]; then
     sudo -u vagrant git pull origin master
 fi
 if [ ! -f .env.dev ]; then
     if [ ! -f .env.example ]; then
-        laravel new --force .
+        sudo -u vagrant composer create-project --prefer-dist laravel/laravel code
+        sudo -u vagrant mv code/* .
+        rm -rf code
      fi
     cp .env.example .env
     echo -n "WHAT IS THE NAME OF THE DATABASE FOR THIS APP"
